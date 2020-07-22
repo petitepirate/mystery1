@@ -64,9 +64,9 @@ async function fillTable(catId, catObjCallback) {
 	$head.append($hrow);
 	// loop over the returned category ids (created with the getCategoryIs function) and add title to head row
 	for (let category of categories) {
-		// runs the CatObj funciton with the category id passed through
+		// runs the catObjCallback funciton with the category id passed through
 		let returnedCategory = await catObjCallback(category);
-		//console.log(catObj(category));  // 6 promises, each with an array of 5 questions and answers
+		//console.log(catObjCallback(category));  // 6 promises, each with an array of 5 questions and answers
 		let $newTd = $(`<td>${returnedCategory.title}</td>`); // takes each promise and adds its title as the table heading
 		$head.children().append($newTd); // appends the table heading
 	}
@@ -79,7 +79,7 @@ async function fillTable(catId, catObjCallback) {
 		$body.append($trow);
 		// loop over each
 		for (let x = 0; x < numCategories; x++) {
-			// runs the CatObj funciton with the category id passed through
+			// runs the catObjCallback funciton with the category id passed through
 			let returnedCategory = await catObjCallback(categories[x]);
 			// create new td with an class to allow for easey tracking
 			let $td = $(`<td class="${returnedCategory.id}">?</td>`);
