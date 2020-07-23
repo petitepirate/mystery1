@@ -24,7 +24,7 @@ let numQuestionsPerCat = 5;
 
 // async function to get categories to pick from and then return 6 random nonrepeating categories
 async function getCategoryIds() {
-	let response = await axios.get('http://jservice.io/api/categories', {
+	let response = await axios.get('https://jservice.io/api/categories', {
 		params: { count: 100, offset: Math.floor(Math.random() * 100) }
 	});
 	let newArray = [];
@@ -42,7 +42,7 @@ async function getCategoryIds() {
 //function that takes in the 6 category ids and returns objects with all the data.
 async function getCategory(catId) {
 	// returns an object based on a passsed in category id. object includes title, id and questions/ answers
-	let response = await axios.get(`http://jservice.io//api/category?id=${catId}`);
+	let response = await axios.get(`https://jservice.io//api/category?id=${catId}`);
 	let catObj = response.data;
 	// return for later use
 	return catObj; //5 new objects with id, title, clues for each of the 6 categories (35 total objects)
